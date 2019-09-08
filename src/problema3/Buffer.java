@@ -7,7 +7,7 @@ public class Buffer {
 	private ArrayList<String> data;
 	
 	Buffer() {
-		this.data = new ArrayList<>();
+		this.data = new ArrayList<String>();
 	}
 
 	ArrayList<String> getData() {

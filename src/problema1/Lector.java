@@ -1,29 +1,31 @@
 package problema1;
-import java.util.*;
+import static problema1.Principal.readCount;
+import static problema1.Principal.readLock;
+import static problema1.Principal.writeLock;
 
-public class Lector extends Thread{
+public class Lector implements Runnable{
 	
-	private static Random r = new Random();
-	private Gestor gestor;
-	private int id;
-	
-	public Lector(Gestor gestor, int id) {
-		this.gestor = gestor;
-		this.id = id;
-	}
-	
-	@Override
-	public void run() {
-		while(true) {
-			try {
-				gestor.close(id);
-				Thread.sleep(r.nextInt(200));
-				gestor.open(id);
-				Thread.sleep(r.nextInt(500));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	 
+     public void run() {
+         try {
+             readLock.acquire();
+             readCount.getAndIncrement();
+             if (readCount.equals(new Integer(1))) writeLock.acquire();
+             
+             readLock.release();
+
+             System.out.println("Hilo " + Thread.currentThread().getName() + " leyendo ");
+             Thread.sleep(1500);
+             System.out.println("Hilo "+Thread.currentThread().getName() + " ha terminado de leer");
+
+             readLock.acquire();
+             readCount.getAndDecrement();
+             if(readCount.equals(new Integer(0))) writeLock.release();
+             
+             readLock.release();
+         } catch (InterruptedException e) {
+             System.out.println(e.getMessage());
+         }
+     }
 	
 }

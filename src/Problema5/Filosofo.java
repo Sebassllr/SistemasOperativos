@@ -4,6 +4,7 @@ package Problema5;
 import java.util.Random;
 
 public class Filosofo implements Runnable{
+	
     private final int id;
     private final Tenedor TenedorIzquierdo;
     private final Tenedor TenedorDerecho;
@@ -18,7 +19,6 @@ public class Filosofo implements Runnable{
       this.TenedorDerecho = TenedorDerecho;
     }
 
-    @Override
     public void run() {
 
       try {
