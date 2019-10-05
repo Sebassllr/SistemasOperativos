@@ -4,6 +4,11 @@ import static problema1.Principal.readCount;
 import static problema1.Principal.readLock;
 import static problema1.Principal.writeLock;
 
+/**
+ * Sistemas Operativos 
+ * @author Sebastian Leandro Luna Reinosa
+ * @since 17/09/2019
+ */
 public class Lector implements Runnable {
 
 	public void run() {
@@ -15,7 +20,7 @@ public class Lector implements Runnable {
 
 			readLock.release();
 
-			System.out.println("Hilo " + Thread.currentThread().getName() + " leyendo ");
+			System.out.println("Hilo " + Thread.currentThread().getName() + " Entra a cola de lectura ");
 			Thread.sleep(1500);
 			System.out.println("Hilo " + Thread.currentThread().getName() + " ha terminado de leer");
 

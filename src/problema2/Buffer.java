@@ -2,12 +2,16 @@ package problema2;
 
 import java.util.LinkedList;
 
+/**
+ * Sistemas Operativos 
+ * @author Sebastian Leandro Luna Reinosa
+ * @since 17/09/2019
+ */
 public class Buffer {
 
 	LinkedList<Integer> list = new LinkedList<Integer>();
 	int capacity = 2;
 
-	// Function called by producer thread
 	public void produce() throws InterruptedException {
 		int value = 0;
 		while (true) {
@@ -25,20 +29,16 @@ public class Buffer {
 	public void consume() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				// consumer thread waits while list
-				// is empty
+
 				while (list.size() == 0)
 					wait();
 
-				// to retrive the ifrst job in the list
 				int val = list.removeFirst();
 
 				System.out.println("El consumidor consumió - " + val);
 
-				// Wake up producer thread
 				notify();
 
-				// and sleep
 				Thread.sleep(1000);
 			}
 		}

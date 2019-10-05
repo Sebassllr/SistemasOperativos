@@ -1,12 +1,16 @@
 package problema2;
 
+/**
+ * Sistemas Operativos 
+ * @author Sebastian Leandro Luna Reinosa
+ * @since 17/09/2019
+ */
 public class Principal {
 
 	public static void main(String[] args) throws InterruptedException {
 
 		final Buffer pc = new Buffer();
 
-		// Create producer thread
 		Thread t1 = new Thread(new Runnable() {
 			public void run() {
 				try {
@@ -17,7 +21,6 @@ public class Principal {
 			}
 		});
 
-		// Create consumer thread
 		Thread t2 = new Thread(new Runnable() {
 			public void run() {
 				try {
