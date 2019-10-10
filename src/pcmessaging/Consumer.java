@@ -13,7 +13,6 @@ public class Consumer {
     private BufferedReader in;
     private PrintWriter out;
 	
-
     public Consumer(String hostname, int port) throws IOException {
         socket = new Socket(hostname, port);
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

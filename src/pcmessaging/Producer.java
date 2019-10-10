@@ -13,7 +13,7 @@ public class Producer {
 	
     private ServerSocket serverSocket;
     
-    private Integer inventory = 0;
+    private Integer inventory;
     
     public Producer(int port) throws IOException {
         serverSocket = new ServerSocket(port);
@@ -22,9 +22,7 @@ public class Producer {
 	
     public void serve() throws IOException {
         while (true) {
-            // block until a client connects
             final Socket socket = serverSocket.accept();
-            // create a new thread to handle that client
             Thread handler = new Thread(new Runnable() {
                 public void run() {
                     try {
@@ -53,7 +51,6 @@ public class Producer {
         	}
         	inventory -= request;
 		}
-
     }
     
     private void handle(Socket socket) throws IOException {

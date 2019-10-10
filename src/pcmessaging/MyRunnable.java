@@ -1,8 +1,5 @@
 package pcmessaging;
 
-import static pcmessaging.ParamsUtil.SERVER_PORT;
-import static pcmessaging.ParamsUtil.generateRandomNumber;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
